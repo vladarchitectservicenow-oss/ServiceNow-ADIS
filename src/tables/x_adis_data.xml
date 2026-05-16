@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (C) 2026 Vladimir Kapustin
+  SPDX-License-Identifier: AGPL-3.0-or-later
+-->
+<unload unload_date="2026-05-16 00:00:00">
+
+  <!-- x_adis_scan_run -->
+  <x_adis_scan_run action="INSERT_OR_UPDATE">
+    <sys_id><![CDATA[adis_scanrun_0000000001]]></sys_id>
+    <number><![CDATA[ADI-2026-0001]]></number>
+    <scan_type><![CDATA[full]]></scan_type>
+    <scope><![CDATA[global]]></scope>
+    <target_releases><![CDATA[Australia,Zurich]]></target_releases>
+    <state><![CDATA[Completed]]></state>
+    <findings_count><![CDATA[3]]></findings_count>
+    <skipped_count><![CDATA[0]]></skipped_count>
+    <risk_score><![CDATA[42]]></risk_score>
+    <execution_time_ms><![CDATA[45600]]></execution_time_ms>
+    <last_scan_run_ref><![CDATA[]]></last_scan_run_ref>
+    <pushed_to_instance_scan><![CDATA[false]]></pushed_to_instance_scan>
+    <started><![CDATA[2026-05-16 00:00:00]]></started>
+    <ended><![CDATA[2026-05-16 00:00:46]]></ended>
+    <sys_created_by><![CDATA[admin]]></sys_created_by>
+    <sys_created_on><![CDATA[2026-05-16 00:00:00]]></sys_created_on>
+    <sys_updated_by><![CDATA[admin]]></sys_updated_by>
+    <sys_updated_on><![CDATA[2026-05-16 00:00:46]]></sys_updated_on>
+    <sys_scope><![CDATA[x_adis]]></sys_scope>
+  </x_adis_scan_run>
+
+  <!-- x_adis_finding 1 -->
+  <x_adis_finding action="INSERT_OR_UPDATE">
+    <sys_id><![CDATA[adis_finding_0000000001]]></sys_id>
+    <scan_run_ref><![CDATA[adis_scanrun_0000000001]]></scan_run_ref>
+    <table_name><![CDATA[sys_script_include]]></table_name>
+    <record_sys_id><![CDATA[abcd1234efgh5678ijkl9012mnop3456]]></record_sys_id>
+    <record_name><![CDATA[ExampleScriptInclude]]></record_name>
+    <deprecated_item><![CDATA[GlideElementDynamicAttribute]]></deprecated_item>
+    <regex_match><![CDATA[var x = new GlideElementDynamicAttribute();]]></regex_match>
+    <line_number><![CDATA[15]]></line_number>
+    <severity><![CDATA[Critical]]></severity>
+    <replacement_suggestion><![CDATA[Replace with typed GlideElement() constructors or GlideRecord field accessors.]]></replacement_suggestion>
+    <rule_ref><![CDATA[adis_rule_0000000001]]></rule_ref>
+    <state><![CDATA[New]]></state>
+    <sys_scope><![CDATA[x_adis]]></sys_scope>
+  </x_adis_finding>
+
+  <!-- x_adis_finding 2 -->
+  <x_adis_finding action="INSERT_OR_UPDATE">
+    <sys_id><![CDATA[adis_finding_0000000002]]></sys_id>
+    <scan_run_ref><![CDATA[adis_scanrun_0000000001]]></scan_run_ref>
+    <table_name><![CDATA[sys_script]]></table_name>
+    <record_sys_id><![CDATA[wxyz9876fedc5432jihg1098onml7654]]></record_sys_id>
+    <record_name><![CDATA[example_business_rule]]></record_name>
+    <deprecated_item><![CDATA[eventQueue]]></deprecated_item>
+    <regex_match><![CDATA[eventQueue('incident.inserted', current);]]></regex_match>
+    <line_number><![CDATA[8]]></line_number>
+    <severity><![CDATA[Warning]]></severity>
+    <replacement_suggestion><![CDATA[Use eventQueueScheduled() for scheduled event triggering instead of deprecated eventQueue().]]></replacement_suggestion>
+    <rule_ref><![CDATA[adis_rule_0000000002]]></rule_ref>
+    <state><![CDATA[New]]></state>
+    <sys_scope><![CDATA[x_adis]]></sys_scope>
+  </x_adis_finding>
+
+  <!-- x_adis_finding 3 -->
+  <x_adis_finding action="INSERT_OR_UPDATE">
+    <sys_id><![CDATA[adis_finding_0000000003]]></sys_id>
+    <scan_run_ref><![CDATA[adis_scanrun_0000000001]]></scan_run_ref>
+    <table_name><![CDATA[sys_script_client]]></table_name>
+    <record_sys_id><![CDATA[qwer1234tyui5678opas9012dfgh3456]]></record_sys_id>
+    <record_name><![CDATA[example_client_script]]></record_name>
+    <deprecated_item><![CDATA[Document Intelligence (legacy)]]></deprecated_item>
+    <regex_match><![CDATA[sn_document_intelligence.runExtraction]]></regex_match>
+    <line_number><![CDATA[22]]></line_number>
+    <severity><![CDATA[High]]></severity>
+    <replacement_suggestion><![CDATA[Migrate to Now Assist in Document Intelligence (sn_nai_doc_intelligence).]]></replacement_suggestion>
+    <rule_ref><![CDATA[adis_rule_0000000003]]></rule_ref>
+    <state><![CDATA[New]]></state>
+    <sys_scope><![CDATA[x_adis]]></sys_scope>
+  </x_adis_finding>
+
+  <!-- x_adis_deprecation_rule 1 -->
+  <x_adis_deprecation_rule action="INSERT_OR_UPDATE">
+    <sys_id><![CDATA[adis_rule_0000000001]]></sys_id>
+    <name><![CDATA[GlideElementDynamicAttribute Removal]]></name>
+    <active><![CDATA[true]]></active>
+    <regex_pattern><![CDATA[GlideElementDynamicAttribute]]></regex_pattern>
+    <replacement_suggestion><![CDATA[Replace with typed GlideElement() constructors, or use GlideRecord field access patterns per Australia release notes.]]></replacement_suggestion>
+    <target_release><![CDATA[Australia]]></target_release>
+    <severity><![CDATA[Critical]]></severity>
+    <applies_to><![CDATA[sys_script_include,sys_script,sys_script_client,sys_ws_operation]]></applies_to>
+    <description><![CDATA[GlideElementDynamicAttribute class was removed in Australia. Scripts referencing it will throw TypeError on execution.]]></description>
+    <category><![CDATA[Platform]]></category>
+    <sys_scope><![CDATA[x_adis]]></sys_scope>
+  </x_adis_deprecation_rule>
+
+  <!-- x_adis_deprecation_rule 2 -->
+  <x_adis_deprecation_rule action="INSERT_OR_UPDATE">
+    <sys_id><![CDATA[adis_rule_0000000002]]></sys_id>
+    <name><![CDATA[eventQueue Deprecated]]></name>
+    <active><![CDATA[true]]></active>
+    <regex_pattern><![CDATA[\beventQueue\s*\(]]></regex_pattern>
+    <replacement_suggestion><![CDATA[Use eventQueueScheduled() for scheduled asynchronous processing.]]></replacement_suggestion>
+    <target_release><![CDATA[Australia]]></target_release>
+    <severity><![CDATA[Warning]]></severity>
+    <applies_to><![CDATA[sys_script_include,sys_script,sys_script_client,sys_ws_operation]]></applies_to>
+    <description><![CDATA[eventQueue() is deprecated in favor of eventQueueScheduled() for better asynchronous handling.]]></description>
+    <category><![CDATA[Platform]]></category>
+    <sys_scope><![CDATA[x_adis]]></sys_scope>
+  </x_adis_deprecation_rule>
+
+  <!-- x_adis_deprecation_rule 3 -->
+  <x_adis_deprecation_rule action="INSERT_OR_UPDATE">
+    <sys_id><![CDATA[adis_rule_0000000003]]></sys_id>
+    <name><![CDATA[Legacy Document Intelligence API]]></name>
+    <active><![CDATA[true]]></active>
+    <regex_pattern><![CDATA[sn_document_intelligence]]></regex_pattern>
+    <replacement_suggestion><![CDATA[Migrate to Now Assist in Document Intelligence (sn_nai_doc_intelligence) APIs.]]></replacement_suggestion>
+    <target_release><![CDATA[Australia]]></target_release>
+    <severity><![CDATA[High]]></severity>
+    <applies_to><![CDATA[sys_script_include,sys_script,sys_script_client,sys_ws_operation]]></applies_to>
+    <description><![CDATA[Standalone Document Intelligence is deprecated as of Australia. Move to Now Assist in Document Intelligence.]]></description>
+    <category><![CDATA[AI]]></category>
+    <sys_scope><![CDATA[x_adis]]></sys_scope>
+  </x_adis_deprecation_rule>
+
+  <!-- x_adis_remediation_task (template) -->
+  <x_adis_remediation_task action="INSERT_OR_UPDATE">
+    <sys_id><![CDATA[adis_remtask_0000000001]]></sys_id>
+    <finding_ref><![CDATA[adis_finding_0000000001]]></finding_ref>
+    <task_type><![CDATA[change_request]]></task_type>
+    <short_description><![CDATA[ADIS Remediation: GlideElementDynamicAttribute in ExampleScriptInclude]]></short_description>
+    <description><![CDATA[Finding ref: adis_finding_0000000001
+Record: sys_script_include / abcd1234efgh5678ijkl9012mnop3456 (ExampleScriptInclude)
+Deprecated item: GlideElementDynamicAttribute
+Severity: Critical
+Replace with typed GlideElement() constructors or GlideRecord field accessors.]]></description>
+    <state><![CDATA[New]]></state>
+    <priority><![CDATA[1]]></priority>
+    <assignment_group><![CDATA[]]></assignment_group>
+    <external_task_ref><![CDATA[]]></external_task_ref>
+    <sys_scope><![CDATA[x_adis]]></sys_scope>
+  </x_adis_remediation_task>
+
+</unload>

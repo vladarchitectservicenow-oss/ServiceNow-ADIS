@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (C) 2026 Vladimir Kapustin
+  This file is part of ServiceNow ADIS (Australia Deprecation Impact Scanner).
+  SPDX-License-Identifier: AGPL-3.0-or-later
+-->
+<unload unload_date="2026-05-16 00:00:00">
+  <sys_app action="INSERT_OR_UPDATE">
+    <name>Australia Deprecation Impact Scanner</name>
+    <scope>x_adis</scope>
+    <version>1.0.0</version>
+    <vendor>Vladimir Kapustin (vladarchitect)</vendor>
+    <description>
+      Scans ServiceNow instances for deprecated APIs, tables, properties, and UI patterns
+      across the Zurich to Australia upgrade path. Produces impact reports, auto-creates
+      remediation tasks, and integrates with Instance Scan. Target: Platform Owners,
+      Upgrade Teams, Security/GRC.
+    </description>
+    <license>AGPL-3.0-only</license>
+    <active>true</active>
+    <enforce_license>log</enforce_license>
+    <js_level>helsinki_es5</js_level>
+    <owner>Vladimir Kapustin</owner>
+    <restrict_table_access>false</restrict_table_access>
+    <runtime_access_tracking>permissive</runtime_access_tracking>
+    <short_description>Deprecation scanner for Zurich to Australia</short_description>
+    <sys_class_name>sys_app</sys_class_name>
+    <sys_name>Australia Deprecation Impact Scanner</sys_name>
+    <sys_scope>x_adis</sys_scope>
+  </sys_app>
+</unload>
